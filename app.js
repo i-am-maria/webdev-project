@@ -1,8 +1,9 @@
 const express = require("express");
 const bodyParser = require("body-parser");
+const session = require("express-session");
 
 const sqlite3 = require("sqlite3");
-const db = new sqlite3.Database("shopping.db");
+const db = new sqlite3.Database('shopping.db');
 
 const app = express();
 
@@ -29,9 +30,6 @@ app.get("/users", function(req, res) {
 app.get("/index", function(req, res) {
 	res.sendFile(__dirname + "/index.html");
 });
-app.get("*", function(req, res) {
-	res.redirect("/");
-});
 
 //add a login/out in navbar
 app.get("/loginout", function(req, res) {
@@ -48,11 +46,10 @@ app.get('/logout', function(req, res) {
     res.redirect('/');
 });
 
-app.get("/buildList", function(req, res) {
+app.get("/buildlist", function(req, res) {
 	const query = db.prepare(findItems);
 	query.all(function(error, rows) {
 		if (error) {
-			console.log(error);
 			res.status(400).json(error);
 		} else {
 			res.status(200).json(rows);
@@ -70,4 +67,8 @@ app.get("/buildUsers", function(req, res) {
 			res.status(200).json(rows);
 		}
 	});
+});
+
+app.get("*", function(req, res) {
+	res.redirect("/");
 });

@@ -1,5 +1,5 @@
 $(function() {
-	const get = $.get("http://localhost:3000/buildList");
+	const get = $.get("http://localhost:3000/buildlist");
 	get.done(showItems);
 	get.fail(itemRetrieveError);
 });
