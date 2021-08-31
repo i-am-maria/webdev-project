@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+	<head>
+    <title>A simple shopping list!</title>
+		<meta charset="utf-8">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="icon" href="img/favicon.ico">
+    <link rel="stylesheet" href="css/index.css">
+  </head>
+
+	<body>
+    <nav class="navbar navbar-default">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="#">A simple shopping list!</a>
+        </div>
+        <ul class="nav navbar-nav">
+          <li class="active"><a href="/index">Home</a></li>
+          <li><a href="/users">Users</a></li>
+          <li><a href="/logout">Log out</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <div class="container-fluid shopping-list">
+
+      <div class="input-group rounded">
+        <input type="search" class="form-control rounded" placeholder="Search for items..." aria-label="Search"
+          aria-describedby="search-addon" />
+        <span class="input-group-text border-0" id="search-addon">
+          <i class="fas fa-search"></i>
+        </span>
+      </div>
+
+      <div id="shopping-list"> </div>
+
+      <div class="row">
+        <div class="col-8">
+            <form id='formNewItem' class='form-inline'>
+
+                <div class='form'>
+
+                    <div class='form-group row'>
+                        <input id='itemName' name='itemName' type="text" class="form-control col-4 mr-3" placeholder="Enter item name..."> 
+                        <select class="form-select" aria-label="Default select example">
+                          <option selected>Select the item type...</option>
+                          <option value="1">Fresh produce</option>
+                          <option value="2">Bakery</option>
+                          <option value="3">Dairy</option>
+                          <option value="4">Meat</option>
+                          <option value="5">Food Cupboard</option>
+                          <option value="6">Frozen</option>
+                          <option value="6">Frozen</option>
+                        </select>
+                        <input id='itemQuantity' name='itemQuantity' type="text" class="form-control col-4 mr-3" placeholder="Enter item quantity...">
+                        <button id='btnSubmit' type='button' class='btn btn-primary mr-3'>Add new item</button>
+                        <button id='btnClear' type='button' class='cancel btn btn-primary mr-3'>Clear</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+      
+    </div>
+	
+		
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+    <script src="js/index.js"></script>
+  </body>
+
+</html>

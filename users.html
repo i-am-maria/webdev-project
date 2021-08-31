@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>A simple shopping list!</title>
+		<meta charset="utf-8">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="icon" href="img/favicon.ico">
+    <link rel="stylesheet" href="css/users.css">
+  </head>
+
+	<body>
+    <nav class="navbar navbar-default">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="#">A simple shopping list!</a>
+        </div>
+        <ul class="nav navbar-nav">
+          <li class="active"><a href="/index">Home</a></li>
+          <li><a href="/users">Users</a></li>
+          <li><a href="/logout">Log out</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    
+
+    <div class="container-fluid user-list">
+
+      <div id="users-list"> </div>
+
+      <div class="row">
+        <div class="col-8">
+            <form id='formNewUser' class='form-inline'>
+
+                <div class='form'>
+
+                    <div class='form-group row'>
+                        <input id='userName' name='itemName' type="text" class="form-control col-4 mr-3" placeholder="Enter user name..."> 
+                        <input id='userPassword' name='itemQuantity' type="password" class="form-control col-4 mr-3" placeholder="Enter the user password...">
+                        <select class="form-select" aria-label="Default select example">
+                          <option selected>Select the user type...</option>
+                          <option value="1">Parent</option>
+                          <option value="2">Child</option>
+                        </select>
+                        <button id='btnSubmit' type='button' class='btn btn-primary mr-3'>Add new user</button>
+                        <button id='btnClear' type='button' class='cancel btn btn-primary mr-3'>Clear</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+      
+    </div>
+	
+		<script src="js/users.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+	</body>
+
+</html>
