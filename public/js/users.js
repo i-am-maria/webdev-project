@@ -1,5 +1,5 @@
 $(function() {
-	const get = $.get("http://localhost:3000/buildUsers");
+	const get = $.get("http://localhost:3000/buildusers");
 	get.done(showUsers);
 	get.fail(userRetrieveError);
 });
@@ -23,9 +23,18 @@ function showUsers(rows, status, xhr) {
 	}
 	wrapper += `</tbody>
 			</table>`;
-	$("#users-list").empty();
-	$(wrapper).appendTo("#users-list");
+	$("#user-list").empty();
+	$(wrapper).appendTo("#user-list");
 }
+
+$("#search-users").keyup(function() {
+	const searchdata = {
+		search: $("#search-users").val()
+	}
+	const post = $.post("http://localhost:3000/findUser", searchdata);
+	post.done(showUsers);
+	post.fail(userRetrieveError);
+});
 
 function userRetrieveError(response, status, xhr) {
     console.log("An error occured when retrieving the users. The stacktrace is as follows: " + response);

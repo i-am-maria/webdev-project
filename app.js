@@ -13,6 +13,9 @@ app.use(express.static(__dirname + "/public"));
 //SQL queries
 const findItems = "SELECT name, itemType, quantity FROM list ORDER BY name ASC;";
 const findUsers = "SELECT username, role FROM users ORDER BY role ASC;";
+const deleteItem = "DELETE FROM list WHERE name = $1;";
+const searchItem = "SELECT name, itemType, quantity FROM list WHERE name LIKE $1 ;";
+const searchUser = "SELECT username, role FROM users WHERE username LIKE $1 ;";
 
 app.listen(3000, function() {
 	console.log("Server running on port 3000");
@@ -57,7 +60,7 @@ app.get("/buildlist", function(req, res) {
 	});
 });
 
-app.get("/buildUsers", function(req, res) {
+app.get("/buildusers", function(req, res) {
 	const query = db.prepare(findUsers);
 	query.all(function(error, rows) {
 		if (error) {
@@ -67,6 +70,53 @@ app.get("/buildUsers", function(req, res) {
 			res.status(200).json(rows);
 		}
 	});
+});
+
+app.post("/findItem", function(req, res) {
+	const value = "%" + req.body.search + "%";
+	const query = db.prepare(searchItem);
+	query.all(value, function(error, rows) {
+		if (error) {
+			console.log(error);
+			res.status(400).json(error);
+		} else {
+			res.status(200).json(rows);
+		}
+	});
+});
+
+app.post("/findUser", function(req, res) {
+	const value = "%" + req.body.search + "%";
+	const query = db.prepare(searchUser);
+	query.all(value, function(error, rows) {
+		if (error) {
+			console.log(error);
+			res.status(400).json(error);
+		} else {
+			res.status(200).json(rows);
+		}
+	});
+});
+
+app.post("/deleteItem", function(req, res) {
+    const itemName = req.body.name;
+    const deleteStmt = db.prepare(deleteItem);
+    deleteStmt.run(itemName);
+    deleteStmt.finalize(function() {
+
+    });
+
+    const query = db.prepare(findItems);
+    query.all(function(error, rows) {
+        if (error) {
+            console.log(error);
+            res.status(400).json(error);
+        } else {
+            console.log(rows);
+            res.status(200).json(rows);
+        }
+    });
+
 });
 
 app.get("*", function(req, res) {

@@ -15,18 +15,18 @@
           <a class="navbar-brand" href="#">A simple shopping list!</a>
         </div>
         <ul class="nav navbar-nav">
-          <li class="active"><a href="/index">Home</a></li>
+          <li><a href="/index">Home</a></li>
           <li><a href="/users">Users</a></li>
           <li><a href="/logout">Log out</a></li>
         </ul>
       </div>
     </nav>
 
-    
-
     <div class="container-fluid user-list">
 
-      <div id="users-list"> </div>
+      <input id="search-users" class="col-10" placeholder="Search for users..."></input>
+
+      <div id="user-list"> </div>
 
       <div class="row">
         <div class="col-8">
@@ -51,9 +51,9 @@
       
     </div>
 	
-		<script src="js/users.js"></script>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
-	</body>
+    <script src="js/users.js"></script>
+  </body>
 
 </html>
