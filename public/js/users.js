@@ -4,6 +4,12 @@ $(function() {
 	get.fail(userRetrieveError);
 });
 
+$(function() {
+	const get = $.get("http://localhost:3000/loginout");
+	get.done(showNavLogin);
+	get.fail(console.error());
+});
+
 function showUsers(rows, status, xhr) {
 	let wrapper = `
 	<table class="table">
@@ -35,6 +41,10 @@ $("#search-users").keyup(function() {
 	post.done(showUsers);
 	post.fail(userRetrieveError);
 });
+
+function showNavLogin(response, status, xhr) {
+	$(response.navtext).appendTo("#navigation");
+}
 
 function userRetrieveError(response, status, xhr) {
     console.log("An error occured when retrieving the users. The stacktrace is as follows: " + response);

@@ -4,6 +4,12 @@ $(function() {
 	get.fail(itemRetrieveError);
 });
 
+$(function() {
+	const get = $.get("http://localhost:3000/loginout");
+	get.done(showNavLogin);
+	get.fail(console.error());
+});
+
 function showItems(rows, status, xhr) {
 	let wrapper = `
 	<table class="table">
@@ -33,6 +39,59 @@ function showItems(rows, status, xhr) {
 			</table>`;
 	$("#shopping-list").empty();
 	$(wrapper).appendTo("#shopping-list");
+
+  $("#formNewItem").validate({
+		rules: {
+			itemName: {
+				required: true,
+				minlength: 3,
+				maxlength: 50,
+        string: true
+			},
+      itemType: {
+        required: true
+      },
+      quantity: {
+        required: true,
+        number:true,
+        min: 1
+      }
+		},
+    messages: {
+      itemName: {
+          required: 'Item name can not be empty.',
+          minlength: 'Item name must be at least 3 characters long.',
+          maxlength: 'Item name too long.'
+      },
+      itemType: {
+        required: "You must select an item type."
+      },
+      quantity: {
+        required: "You must enter the quantity.",
+        number: "The quantity must be a number.",
+        min: "The quantity has to be at least 1."
+      }
+  },
+		submitHandler: addItem,
+	});
+	$("#btnSubmit").click(function() {
+		$("#formNewItem").submit();
+	});
+}
+
+function showNavLogin(response, status, xhr) {
+	$(response.navtext).appendTo("#navigation");
+}
+
+function addItem() {
+  data = {
+    name: $("#itemName").val(),
+    itemType: $("#item-type option:selected").text(),
+    quantity: $("#quantity").val()
+  }
+  const add = $.post("http://localhost:3000/addItem", data);
+  add.done(showItems);
+  add.fail(itemModifyError);
 }
 
 $("#search-items").keyup(function() {
@@ -46,4 +105,8 @@ $("#search-items").keyup(function() {
 
 function itemRetrieveError(response, status, xhr) {
     console.log("An error occured when retrieving the list. The stacktrace is as follows: " + response);
+}
+
+function itemModifyError(response, status, xhr) {
+  console.log("An error occured when modifying the shopping list. The stacktrace is as follows: " + response);
 }

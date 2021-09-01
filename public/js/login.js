@@ -1,3 +1,9 @@
+$(function() {
+	const get = $.get("http://localhost:3000/loginout");
+	get.done(showNavLogin);
+	get.fail(console.error());
+});
+
 $("#form-signin").validate({
 	rules: {
 		username: {
@@ -19,8 +25,11 @@ $("#form-signin").validate({
             required: 'You must enter a password.',
         },
     },
-	onfocusout: validateinfo
 });
+
+function showNavLogin(response, status, xhr) {
+	$(response.navtext).appendTo("#navigation");
+}
 
 function validateinfo(element, event) {
 	$(element).valid();

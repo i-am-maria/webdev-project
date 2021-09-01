@@ -10,7 +10,7 @@ CREATE TABLE users (
     role varchar(50)
 );
 
-INSERT INTO users VALUES ('user','password','parent');
+INSERT INTO users VALUES ('user','$2a$09$8/qSCqYAsXElWjAYI5PS8OXixKKbll7oTw2cNX1AWofVLPI3G6Yty','parent');
 INSERT INTO users VALUES ('Shane','password', 'parent');
 INSERT INTO users VALUES ('Kevin', 'password', 'child');
 
