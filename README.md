@@ -17,7 +17,7 @@ node app.js
 And navigate to http://localhost:3000. 
 
 ## Credentials to use
-To log in as a default account (parent) use the "user" for username and a "password" for password (WITHOUT the quotation marks). As a parent you will be able to add any shopping item and add new accounts.
+To log in as a default account (parent) use the "user" for username and a "password" for password (WITHOUT the quotation marks). If you are not logged in you won't be able to add any new items or view the user list.
 
 ## Database
 The SQLite database required for the project is included under the main root and is called shopping.db. The raw SQL file to recreate it is also included under the name shopping.sql.
