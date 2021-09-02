@@ -27,7 +27,7 @@ const findUserByName = "SELECT username, password FROM users WHERE username LIKE
 const insertItem = 'INSERT INTO list VALUES (name, itemType, quantity) VALUES ($1, $2, $3);';
 
 app.use(session({
-    secret: "C18764491",
+    secret: "Maria's cookie",
     resave: false,
     saveUninitialized: false
 }));
@@ -98,7 +98,11 @@ app.get("/", function (req, res) {
 });
 
 app.get("/users", function (req, res) {
-	res.sendFile(__dirname + "/users.html");
+	if (req.isAuthenticated()) {
+		res.sendFile(__dirname + "/users.html");
+	} else {
+		res.redirect("/login");
+	}
 });
 
 app.get("/index", function (req, res) {
