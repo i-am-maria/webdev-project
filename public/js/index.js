@@ -40,45 +40,44 @@ function showItems(rows, status, xhr) {
 	$("#shopping-list").empty();
 	$(wrapper).appendTo("#shopping-list");
 
-}
-
-$("#formNewItem").validate({
-  rules: {
-    itemName: {
-      required: true,
-      minlength: 3,
-      maxlength: 50,
-      string: true
-    },
-    itemType: {
-      required: true
-    },
-    quantity: {
-      required: true,
-      number:true,
-      min: 1
-    }
+  $("#formNewItem").validate({
+		rules: {
+			itemName: {
+				required: true,
+				minlength: 3,
+				maxlength: 50,
+        string: true
+			},
+      itemType: {
+        required: true
+      },
+      quantity: {
+        required: true,
+        number:true,
+        min: 1
+      }
+		},
+    messages: {
+      itemName: {
+          required: 'Item name can not be empty.',
+          minlength: 'Item name must be at least 3 characters long.',
+          maxlength: 'Item name too long.'
+      },
+      itemType: {
+        required: "You must select an item type."
+      },
+      quantity: {
+        required: "You must enter the quantity.",
+        number: "The quantity must be a number.",
+        min: "The quantity has to be at least 1."
+      }
   },
-  messages: {
-    itemName: {
-        required: 'Item name can not be empty.',
-        minlength: 'Item name must be at least 3 characters long.',
-        maxlength: 'Item name too long.'
-    },
-    itemType: {
-      required: "You must select an item type."
-    },
-    quantity: {
-      required: "You must enter the quantity.",
-      number: "The quantity must be a number.",
-      min: "The quantity has to be at least 1."
-    }
-},
-  submitHandler: addItem,
-});
-$("#btnSubmit").click(function() {
-  $("#formNewItem").submit();
-});
+		submitHandler: addItem,
+	});
+	$("#btnSubmit").click(function() {
+		$("#formNewItem").submit();
+	});
+}
 
 function showNavLogin(response, status, xhr) {
 	$(response.navtext).appendTo("#navigation");

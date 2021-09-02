@@ -98,12 +98,7 @@ app.get("/", function (req, res) {
 });
 
 app.get("/users", function (req, res) {
-	if (req.isAuthenticated()) {
-		res.sendFile(__dirname + "/users.html");
-	} else {
-		res.redirect("/login");
-	}
-	
+	res.sendFile(__dirname + "/users.html");
 });
 
 app.get("/index", function (req, res) {
