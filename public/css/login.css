@@ -1,3 +1,8 @@
 button {
     width:10vw;
 }
+
+.form-control {
+    margin-bottom:2vw;
+    margin-top:2vh;
+}

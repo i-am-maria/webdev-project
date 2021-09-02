@@ -49,3 +49,7 @@ function showNavLogin(response, status, xhr) {
 function userRetrieveError(response, status, xhr) {
     console.log("An error occured when retrieving the users. The stacktrace is as follows: " + response);
 }
+
+$('#btnClear').click(function() {
+	location.reload();
+  });

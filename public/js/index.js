@@ -110,3 +110,7 @@ function itemRetrieveError(response, status, xhr) {
 function itemModifyError(response, status, xhr) {
   console.log("An error occured when modifying the shopping list. The stacktrace is as follows: " + response);
 }
+
+$('#btnClear').click(function() {
+  location.reload();
+});
