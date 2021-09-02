@@ -39,15 +39,14 @@ function showItems(rows, status, xhr) {
 			</table>`;
 	$("#shopping-list").empty();
 	$(wrapper).appendTo("#shopping-list");
-
   $("#formNewItem").validate({
-		rules: {
-			itemName: {
-				required: true,
-				minlength: 3,
-				maxlength: 50,
+    rules: {
+      itemName: {
+        required: true,
+        minlength: 3,
+        maxlength: 50,
         string: true
-			},
+      },
       itemType: {
         required: true
       },
@@ -56,7 +55,7 @@ function showItems(rows, status, xhr) {
         number:true,
         min: 1
       }
-		},
+    },
     messages: {
       itemName: {
           required: 'Item name can not be empty.',
@@ -72,11 +71,12 @@ function showItems(rows, status, xhr) {
         min: "The quantity has to be at least 1."
       }
   },
-		submitHandler: addItem,
-	});
-	$("#btnSubmit").click(function() {
-		$("#formNewItem").submit();
-	});
+    submitHandler: addItem,
+  });
+  
+  $("#btnSubmit").click(function() {
+    $("#formNewItem").submit();
+  });
 }
 
 function showNavLogin(response, status, xhr) {
