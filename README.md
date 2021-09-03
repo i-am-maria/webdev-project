@@ -21,3 +21,6 @@ To log in as a default account (parent) use the "user" for username and a "passw
 
 ## Database
 The SQLite database required for the project is included under the main root and is called shopping.db. The raw SQL file to recreate it is also included under the name shopping.sql.
+
+# Demo
+You can view the demo video under the following Google Drive link: https://drive.google.com/file/d/1nJKXEw7YaElu-vUh2-J5Q17_aU4QBmcN/view?usp=sharing .
